@@ -33,7 +33,6 @@ const Meals = () => {
                     </article>
                 )
             })}
-            <h1>Meals Component</h1>
         </section>
     )
 }

@@ -38,7 +38,7 @@ const AppProvider = ({children}) => {
     const fetchMeals = async (url) => {
         setLoading(true);
         try {
-            const {data} = await axios(`${url}?s=aaaaa`);
+            const {data} = await axios(`${url}?s=a`);
             if(data.meals && data.meals.length > 0) {
                 setMeals(data.meals);
             } else {
