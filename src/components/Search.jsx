@@ -13,16 +13,9 @@ const Search = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(text) {
-            console.log('search for ...', text);
             setSearchTerm(text);
             setText('');
         }
-    }
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        console.log('surprising me ...');
-        getRandomMeal();
     }
 
     return (
@@ -36,7 +29,7 @@ const Search = () => {
                 <button type="submit" className="btn">Search</button>
                 <button type="button" 
                         className="btn btn-hipster"
-                        onClick={handleClick}>
+                        onClick={getRandomMeal}>
                     Surprise me!
                 </button>
             </form>

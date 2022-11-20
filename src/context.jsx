@@ -12,10 +12,6 @@ const AppProvider = ({children}) => {
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
-    // const getMealsByName = async (name) => {
-    //     fetchMeals(`${allMealsUrl}?s=${name}`);
-    // };
-
     const getRandomMeal = async () => {
         fetchMeals(randomMealUrl);
     };
