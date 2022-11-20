@@ -4,16 +4,17 @@ const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
 
+    const fetchData = async () => {
+        try {
+            const response = await fetch('https://randomuser.me/api/');
+            const data = await response.json();
+            console.log(data);
+        } catch(error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://randomuser.me/api/');
-                const data = await response.json();
-                console.log(data);
-            } catch(error) {
-                console.log(error);
-            }
-        };
         fetchData();
     }, []);
 
