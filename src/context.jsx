@@ -12,15 +12,7 @@ const AppProvider = ({children}) => {
     const [loading, setLoading] = useState(false);
 
     const getMealsByName = async (name) => {
-        try {
-            const response = await fetch(`${allMealsUrl}?s=${name}`);
-            const data = await response.json();
-            //console.log(data.meals[0]);
-            return data.meals[0];
-        } catch(error) {
-            console.log(error);
-            return null;
-        }
+        fetchMeals(`${allMealsUrl}?s=${name}`);
     };
 
     const getRandomMeal = async () => {
@@ -38,7 +30,7 @@ const AppProvider = ({children}) => {
     const fetchMeals = async (url) => {
         setLoading(true);
         try {
-            const {data} = await axios(`${url}?s=a`);
+            const {data} = await axios(url);
             if(data.meals && data.meals.length > 0) {
                 setMeals(data.meals);
             } else {
@@ -52,11 +44,11 @@ const AppProvider = ({children}) => {
     };
 
     useEffect(() => {
-        fetchMeals(allMealsUrl);
+        fetchMeals(`${allMealsUrl}?s=a`);
     }, []);
 
     return (
-        <AppContext.Provider value={{meals, loading}}>
+        <AppContext.Provider value={{meals, loading, getMealsByName}}>
             {children}
         </AppContext.Provider>
     )

@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 
 const Search = () => {
 
-    const context = useGlobalContext();
+    const {getMealsByName} = useGlobalContext();
     const [text, setText] = useState('');
 
     const handleChange = (event) => {
@@ -13,6 +13,7 @@ const Search = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('search for ...', text);
+        getMealsByName(text);
     }
 
     return (
