@@ -16,15 +16,7 @@ const AppProvider = ({children}) => {
     };
 
     const getRandomMeal = async () => {
-        try {
-            const response = await fetch(randomMealUrl);
-            const data = await response.json();
-            //console.log(data);
-            return data.meals[0];
-        } catch(error) {
-            console.log(error);
-            return null;
-        }
+        fetchMeals(randomMealUrl);
     };
 
     const fetchMeals = async (url) => {
@@ -48,7 +40,7 @@ const AppProvider = ({children}) => {
     }, []);
 
     return (
-        <AppContext.Provider value={{meals, loading, getMealsByName}}>
+        <AppContext.Provider value={{meals, loading, getMealsByName, getRandomMeal}}>
             {children}
         </AppContext.Provider>
     )

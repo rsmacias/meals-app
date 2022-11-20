@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 
 const Search = () => {
 
-    const {getMealsByName} = useGlobalContext();
+    const {getMealsByName, getRandomMeal} = useGlobalContext();
     const [text, setText] = useState('');
 
     const handleChange = (event) => {
@@ -16,6 +16,12 @@ const Search = () => {
         getMealsByName(text);
     }
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log('surprising me ...');
+        getRandomMeal();
+    }
+
     return (
         <header className="search-container">
             <form onSubmit={handleSubmit}>
@@ -25,7 +31,11 @@ const Search = () => {
                        onChange={handleChange}
                        value={text} />
                 <button type="submit" className="btn">Search</button>
-                <button type="button" className="btn btn-hipster">Surprise me!</button>
+                <button type="button" 
+                        className="btn btn-hipster"
+                        onClick={handleClick}>
+                    Surprise me!
+                </button>
             </form>
         </header>
     )
